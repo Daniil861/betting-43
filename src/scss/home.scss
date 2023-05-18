@@ -1,0 +1,548 @@
+//====================================================================================================
+.main {
+	// .main__body
+
+	&__body {
+		position: relative;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		min-height: 100vh;
+
+		transition: all 0.3s ease 0s;
+
+		._game & {
+			opacity: 0;
+			visibility: hidden;
+			transform: scale(0.5);
+		}
+	}
+
+	// .main__content
+
+	&__content {
+		position: relative;
+		z-index: 2;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		width: 100%;
+		min-height: 100vh;
+	}
+
+	// .main__buttons-box
+
+	&__buttons-box {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		display: flex;
+		flex-direction: column;
+
+		align-items: center;
+
+		width: 100%;
+		height: 100%;
+
+		transition: all 0.7s $timingFunction 0.3s;
+	}
+
+	&__header {
+		width: 100%;
+	}
+
+	&__buttons {
+		flex: 1 1 auto;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		row-gap: 20px;
+	}
+}
+
+.bg-block {
+	height: 32px;
+
+	background: rgba(108, 108, 108, 0.5);
+	backdrop-filter: blur(5.5px);
+	border-radius: 22.5px;
+
+	font-weight: 600;
+	font-size: 18px;
+	line-height: math.div(22, 18);
+
+	color: #ffffff;
+}
+
+.header {
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+
+		padding-top: 18px;
+		padding-inline: 27px 17px;
+	}
+
+	&__privacy {
+		width: 164px;
+		height: 32px;
+	}
+
+	&__btn-home {
+		width: 96px;
+		height: 36px;
+
+		background-image: linear-gradient(
+			180.66deg,
+			#fefe26 27.01%,
+			#ffff68 39.95%,
+			#feffed 50.36%,
+			#fe9a28 59.17%,
+			#fee41d 67.98%
+		);
+		border-radius: 18.5px;
+		padding: 1px;
+
+		span {
+			position: relative;
+			display: block;
+			height: 100%;
+
+			border-radius: 18.5px;
+			overflow: hidden;
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(180deg, #723efb 0%, #481cb9 100%);
+			}
+			&::after {
+				content: "Menu";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-weight: 700;
+				font-size: 20px;
+				line-height: math.div(24, 20);
+				text-transform: uppercase;
+
+				background: linear-gradient(
+					180deg,
+					#fefe03 0%,
+					#ffff01 20.31%,
+					#fff400 46.67%,
+					#ffcb01 48.75%,
+					#ffad00 100%
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+
+				filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+			}
+		}
+	}
+	&__button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		min-width: 113px;
+		height: 44px;
+
+		background-image: linear-gradient(180deg, #111111 0%, #1c1c1c 100%);
+		border: 2px solid #5a5a5a;
+		border-radius: 8px;
+	}
+}
+
+.text {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: math.div(22, 18);
+
+	color: #ffffff;
+}
+//========================================================================================================================================================
+
+.game {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-image: url("@img/other/bg.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	opacity: 0;
+	visibility: hidden;
+
+	transition: all 0.5s ease 0.25s;
+
+	._game & {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	// .game__body
+
+	&__body {
+		position: relative;
+
+		display: flex;
+		flex-direction: column;
+
+		min-height: 100vh;
+	}
+
+	// .game__header
+
+	&__header {
+	}
+
+	&__gate {
+		position: absolute;
+		top: 5%;
+		left: 50%;
+		transform: translateX(-50%);
+
+		width: 426px;
+		height: 211px;
+
+		background-image: url("@img/game/gate.png");
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		@media (max-width: 700px) {
+			width: 298px;
+			height: 148px;
+		}
+
+		@media (min-width: 700px) and (min-height: 700px) {
+			top: 30%;
+		}
+	}
+
+	&__ball {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+
+		width: 101px;
+		height: 101px;
+
+		background-image: url("@img/game/ball.png");
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		transition: all 0.3s ease 0s;
+
+		span {
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translate(-50%, 20px);
+
+			width: 150%;
+			height: 30%;
+			border-radius: 50%;
+
+			background: rgba(18, 18, 18, 0.56);
+			filter: blur(5px);
+		}
+
+		p {
+			position: absolute;
+			top: 10%;
+			right: -80%;
+
+			font-weight: 700;
+			font-size: 28px;
+			line-height: math.div(24, 20);
+
+			background: linear-gradient(180deg, #fefe03 0%, #ffff01 20.31%, #fff400 46.67%, #ffcb01 48.75%, #ffad00 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+
+			filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+			opacity: 0;
+			visibility: hidden;
+
+			transition: all 0.3s ease 0s;
+
+			&._visible {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		z-index: 1;
+		top: 30%;
+		left: 85%;
+
+		width: 49.15px;
+		height: 63.44px;
+
+		background-image: url("@img/icons/hand.svg");
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		animation: hand 0.5s ease 0s;
+
+		transition: all 0.5s ease 0s;
+
+		&._click {
+			transform: scale(0.7);
+		}
+
+		&._hide {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}
+
+//========================================================================================================================================================
+.score-box {
+	background-image: linear-gradient(
+		180.66deg,
+		#fefe26 27.01%,
+		#ffff68 39.95%,
+		#feffed 50.36%,
+		#fe9a28 59.17%,
+		#fee41d 67.98%
+	);
+
+	padding: 1px;
+	border-radius: 18.5px;
+	.final & {
+		border-radius: 25px;
+	}
+
+	// .score-box__body
+
+	&__body {
+		position: relative;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		column-gap: 15px;
+
+		min-width: 113px;
+
+		background: #192131;
+		border-radius: 18.5px;
+
+		.final & {
+			width: 194.44px;
+			height: 50px;
+			border-radius: 25px;
+		}
+	}
+
+	// .score-box__icon
+
+	&__icon {
+		width: 22px;
+		height: 26px;
+		background-image: url("@img/icons/coin.png");
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		.final & {
+			width: 29px;
+			height: 35px;
+		}
+	}
+
+	&__title {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, -120%);
+	}
+
+	// .score-box__score
+
+	&__score {
+		font-weight: 700;
+		font-size: 20px;
+		line-height: math.div(24, 20);
+
+		background: linear-gradient(180deg, #fefe03 0%, #ffff01 20.31%, #fff400 46.67%, #ffcb01 48.75%, #ffad00 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+
+		filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+		.final & {
+			font-size: 32px;
+			line-height: math.div(39, 32);
+		}
+	}
+}
+//========================================================================================================================================================
+.final {
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	opacity: 0;
+	visibility: hidden;
+	transform: scale(0);
+
+	transition: all 0.5s $timingFunction 0s, background-color 0.25s ease 0.25s;
+
+	&._visible {
+		opacity: 1;
+		visibility: visible;
+		background-color: rgba(13, 7, 18, 0.8);
+		transform: scale(1);
+	}
+
+	// .final__body
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		row-gap: 28px;
+
+		width: 314px;
+		height: 279px;
+
+		background: linear-gradient(180deg, #000007 0%, #251244 100%);
+		box-shadow: inset 0px 0px 7px 4px rgba(44, 124, 141, 0.25);
+		border-radius: 20px;
+
+		border: 1px solid #9250fe;
+	}
+
+	// .final__title
+
+	&__title {
+		font-weight: 700;
+		font-size: 40px;
+		line-height: math.div(48, 40);
+		text-transform: uppercase;
+
+		background: linear-gradient(180deg, #fffcae 0%, #fff599 23.75%, #b48247 47.71%, #ffe883 72.71%, #fce391 96.15%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	// .final__score-box
+
+	&__score-box {
+		._lose & {
+			display: none;
+		}
+	}
+
+	// .final__button-box
+
+	&__button-box {
+	}
+
+	// .final__button
+
+	&__button {
+		width: 194.44px;
+		height: 50px;
+
+		background: linear-gradient(180deg, #de5efa 0%, #6506b6 100%);
+		border-radius: 25px;
+
+		border: 1px solid rgba(254, 254, 38, 1);
+		span {
+			font-weight: 700;
+			font-size: 32px;
+			line-height: math.div(39, 32);
+
+			background: linear-gradient(180deg, #fefe03 0%, #ffff01 20.31%, #fff400 46.67%, #ffcb01 48.75%, #ffad00 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+
+			filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+		}
+	}
+}
+
+//====================================================================================================
+@keyframes no-money {
+	0% {
+		background: linear-gradient(180deg, #fefe03 0%, #ffff01 20.31%, #fff400 46.67%, #ffcb01 48.75%, #ffad00 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	100% {
+		background: linear-gradient(180deg, #fe5703 0%, #ff4d01 20.31%, #ff4d00 46.67%, #ff2b01 48.75%, #ff0000 100%);
+		transform: scale(1.1);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+@keyframes delete-money {
+	0% {
+		background: linear-gradient(180deg, #fefe03 0%, #ffff01 20.31%, #fff400 46.67%, #ffcb01 48.75%, #ffad00 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	100% {
+		background: linear-gradient(180deg, #fe5703 0%, #ff4d01 20.31%, #ff4d00 46.67%, #ff2b01 48.75%, #ff0000 100%);
+		transform: translateY(3px);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+@keyframes add-money {
+	100% {
+		background: linear-gradient(180deg, #c8fe03 0%, #afff01 20.31%, #8cff00 46.67%, #05ff01 48.75%, #00ff6e 100%);
+		transform: translateY(-3px);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+@keyframes hand {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	70% {
+		transform: scale(0.7);
+	}
+}
+@keyframes shadow {
+}

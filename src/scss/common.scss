@@ -1,0 +1,187 @@
+.button {
+	position: relative;
+	z-index: 1;
+
+	width: 244px;
+	height: 71.11px;
+
+	background: linear-gradient(180deg, #5e50fe 0%, #51abff 25%, #3dacfd 50%, #1545ef 53.44%, #007abe 100%);
+	border-radius: 10px;
+
+	span {
+		font-weight: 700;
+		font-size: 24px;
+		line-height: math.div(29, 24);
+
+		color: #ffffff;
+		text-transform: uppercase;
+	}
+
+	@media (min-width: 700px) and (min-height: 700px) {
+		width: calc(244px * 2);
+		height: calc(71px * 2);
+		border-radius: 30px;
+		span {
+			font-size: 36px;
+		}
+	}
+
+	&._hold {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+[type="button"] {
+	transition: all 0.3s ease 0s;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+	&:active {
+		transform: translateY(2px);
+	}
+}
+//========================================================================================================================================================
+.preloader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+
+	display: flex;
+	width: 100%;
+	min-height: 100vh;
+
+	background: #390b74;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		background-image: url("@img/other/bg.png");
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	overflow: hidden;
+	transition: all 0.3s ease 0.3s;
+
+	&__block-acces {
+		position: relative;
+	}
+
+	&__acces {
+	}
+
+	&__button-box {
+		position: absolute;
+		z-index: 2;
+		bottom: 22px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	// .preloader__button
+
+	&__button {
+	}
+
+	&._hide {
+		opacity: 0;
+		visibility: hidden;
+
+		transform: translateY(10px);
+	}
+}
+
+.acces-preloader {
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100vh - 19px);
+	padding-block: 32px 120px;
+	padding-inline: 60px;
+
+	overflow: auto;
+
+	&._hide {
+		display: none;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 24px;
+		line-height: math.div(29, 24);
+
+		color: #ffffff;
+		text-align: center;
+
+		padding-bottom: 23px;
+	}
+
+	// .acces-preloader__text
+
+	&__text {
+		padding-bottom: 12px;
+	}
+}
+
+.text-pre {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: math.div(19, 16);
+
+	color: #ffffff;
+
+	@media (min-width: 700px) and (min-height: 700px) {
+		font-size: 22px;
+	}
+
+	&__title {
+		text-transform: uppercase;
+	}
+}
+
+.score {
+	&._no-money {
+		animation: no-money 0.7s ease 2;
+	}
+	&._delete-money {
+		animation: delete-money 0.7s ease;
+	}
+	&._anim-add-money {
+		animation: add-money 0.5s ease 3;
+	}
+}
+.icon-anim {
+	img {
+		&._anim-icon-jump {
+			animation: jump_icon 5s ease;
+		}
+		&._anim-icon-scale {
+			animation: scale_icon 0.5s ease 2;
+		}
+		&._anim-icon-rotate {
+			animation: rotate_icon 1.5s ease-out 1;
+		}
+	}
+}
+
+.text {
+	font-weight: 700;
+	@include adaptiveValue("font-size", 24, 18, 1200, 550, 1);
+	line-height: math.div(23, 20);
+	color: #ffffff;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	&_game {
+		font-weight: 500;
+	}
+}
+
+//========================================================================================================================================================
